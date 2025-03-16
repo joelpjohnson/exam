@@ -25,7 +25,7 @@ public class Santamonica {
 
     @Test
     public void santa() {
-        // Close popup if present
+        
         try {
             WebElement closeButton = driver.findElement(By.xpath("//*[@id=\"launchevent\"]/div/div/div[1]/button/span"));
             if (closeButton.isDisplayed()) {
@@ -33,30 +33,30 @@ public class Santamonica {
                 System.out.println("Popup closed.");
             }
         } catch (Exception e) {
-            System.out.println("Popup not found or already closed.");
+            System.out.println("Popup not found ");
         }
 
-        // Verify if the logo is present
+        
         try {
             WebElement logo = driver.findElement(By.id("logo-img"));
-            Assert.assertTrue(logo.isDisplayed(), "Logo is not displayed on the page.");
-            System.out.println("Logo is present on the page.");
+            Assert.assertTrue(logo.isDisplayed(), "no Logo ");
+            System.out.println("Logo  present ");
         } catch (Exception e) {
-            System.out.println("Logo is NOT present on the page.");
-            Assert.fail("Logo element not found.");
+            System.out.println("");
+            Assert.fail("Logonot found.");
         }
 
-        // Check for broken links
+    
         checkBrokenLinks();
 
-        // Navigate to the specified menu item
+        // Navigate 
         try {
             WebElement menuItem = driver.findElement(By.xpath("//*[@id=\"menu-item-441\"]/a"));
             menuItem.click();
-            System.out.println("Navigated to the menu item successfully.");
+            System.out.println("Navigated    .");
         } catch (Exception e) {
-            System.out.println("Failed to navigate to the menu item.");
-            Assert.fail("Menu item not found.");
+            System.out.println("Failed to navigat3");
+            Assert.fail("not   found.");
         }
     }
 
@@ -67,7 +67,7 @@ public class Santamonica {
         for (WebElement link : links) {
             String url = link.getAttribute("href");
             if (url == null || url.isEmpty()) {
-                System.out.println("Skipping empty or missing URL.");
+                System.out.println("Skippping .");
                 continue;
             }
 
@@ -78,9 +78,9 @@ public class Santamonica {
 
                 int responseCode = connection.getResponseCode();
                 if (responseCode >= 400) {
-                    System.out.println("Broken link: " + url + " | Status Code: " + responseCode);
+                    System.out.println("Broken link: "+ url + " | Status Code: " +responseCode);
                 } else {
-                    System.out.println("Valid link: " + url + " | Status Code: " + responseCode);
+                    System.out.println("Valid link: " + url +" | Status Code: "+ responseCode);
                 }
                 connection.disconnect();
             } catch (IOException e) {
